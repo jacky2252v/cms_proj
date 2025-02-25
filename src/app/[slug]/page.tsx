@@ -12,7 +12,7 @@ export default function Connection({ params }: { params: Promise<{ slug: string 
                 <LanguageSelector />
             </main>
         );
-    } else if (slug === "marquee") {
+    } else if (slug === "connection") {
         return (
             <main className="min-h-screen flex items-center justify-center p-4">
                 <MongoDBCredentialsForm />

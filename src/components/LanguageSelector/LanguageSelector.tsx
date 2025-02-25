@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 const languages = [
   { code: "en", label: "English", flag: "🇬🇧", message: "Good day!", button: "Continue" },
@@ -24,6 +25,7 @@ const languages = [
 ];
 
 export default function LanguageSelector() {
+  const router = useRouter();
   const [inputValue, setInputValue] = useState("English");
   const [selectedLang, setSelectedLang] = useState({
     code: "en",
@@ -54,7 +56,7 @@ export default function LanguageSelector() {
     label: string;
     flag: string;
     message: string;
-  button: string;
+    button: string;
   }
 
   const handleLanguageSelect = (lang: Language): void => {
@@ -124,7 +126,7 @@ export default function LanguageSelector() {
       )}
 
       <div className="mt-8">
-        <button className="px-4 py-2 font-bold bg-black border-4 border-black text-white rounded-lg shadow-lg hover:text-black hover:bg-transparent transition-all duration-500">
+        <button className="px-4 py-2 font-bold bg-black border-4 border-black text-white rounded-lg shadow-lg hover:text-black hover:bg-transparent transition-all duration-500" onClick={() => router.push("/connection")}>
           {selectedLang.button || "Continue"}
         </button>
       </div>
